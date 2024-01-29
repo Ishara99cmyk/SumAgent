@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Summarizer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      .summary-container {
+        margin-top: 20px;
+        text-align: left;
+      }
+
+      h3 {
+        color: #333;
+      }
+
+      p {
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Text Summarizer</h1>
+      <form method="POST" action="{{ url_for('summarize') }}">
+        <label for="userInput">Enter Text:</label>
+        <br />
+        <textarea
+          id="userInput"
+          name="user_input"
+          rows="8"
+          cols="60"
+          required></textarea>
+        <br />
+        <br />
+        <input type="submit" value="Generate Summary" />
+      </form>
+
+      {% if user_input %}
+      <div class="summary-container">
+        <h3>Original Text:</h3>
+        <p>{{ user_input }}</p>
+        <h3>Summary:</h3>
+        <p>{{ summary }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
